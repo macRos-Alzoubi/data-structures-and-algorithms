@@ -211,29 +211,27 @@ const sortSchedule = (arr) => arr.sort((a, b) => {
   else if(a.start > b.start)
     return 1;
   else{
-    if( (a.start === b.start) && (a.dayOfWeek === b.dayOfWeek) ){
-      if( (a.end - a.start) < (b.end - b.start))
-        return - 1;
+    if(a.dayOfWeek === b.dayOfWeek){
+      if((a.end - a.start) < (b.end - b.start))
+        return -1;
       else if((a.end - a.start) > (b.end - b.start))
         return 1;
       else
         return 0;
     }else
-      return -1;
+      return 0;
   }
+});
 
-}
-);
 
-//
-// const meetings = [
+// [
+//   new Meeting('Monday', '0900', '0945'),
 //   new Meeting('Monday', '0900', '1000'),
-//   new Meeting('Wednesday', '1300', '1500'),
 //   new Meeting('Tuesday', '1145', '1315'),
 //   new Meeting('Wednesday', '0930', '1000'),
-//   new Meeting('Monday', '0900', '0945'),
+//   new Meeting('Wednesday', '1300', '1500'),
 //   new Meeting('Friday', '1200', '1345'),
-// ];
+// ]
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
