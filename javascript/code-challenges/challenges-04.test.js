@@ -96,7 +96,6 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 // From => https://stackoverflow.com/questions/8996963/how-to-perform-case-insensitive-sorting-in-javascript
 const alphabetizeBetter = (arr) => arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-//
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -156,6 +155,7 @@ If two people have the same full name, the younger one should come first. Do not
 const sortPeopleBetter = (arr) => arr.sort((a, b) => a.lastName < b.lastName
   ? -1
   : (a.lastName > b.lastName ? 1 : (a.firstName < b.firstName ? -1 : ( a.firstName > b.firstName ? 1 : ( a.age < b.age ? -1 : ( a.age > b.age ? 1 : 0) ) ) ) ));
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 12 - Stretch Goal
@@ -223,15 +223,6 @@ const sortSchedule = (arr) => arr.sort((a, b) => {
   }
 });
 
-
-// [
-//   new Meeting('Monday', '0900', '0945'),
-//   new Meeting('Monday', '0900', '1000'),
-//   new Meeting('Tuesday', '1145', '1315'),
-//   new Meeting('Wednesday', '0930', '1000'),
-//   new Meeting('Wednesday', '1300', '1500'),
-//   new Meeting('Friday', '1200', '1345'),
-// ]
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -303,6 +294,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
+
 describe('Testing challenge 7', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
@@ -343,6 +335,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
+
 describe('Testing challenge 11', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
@@ -364,6 +357,7 @@ describe('Testing challenge 11', () => {
   });
 });
 
+
 describe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
@@ -375,6 +369,7 @@ describe('Testing challenge 12', () => {
 });
 
 describe('Testing challenge 13', () => {
+
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
