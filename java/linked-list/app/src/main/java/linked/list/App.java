@@ -10,7 +10,19 @@ public class App {
       list.insert("S");
       list.insert("A");
       list.insert("D");
+      list.append("YY");
       list.insert("G");
       System.out.println(list);
+      System.out.println(list.insertBefore("D", "X"));
+      System.out.println(list.insertAfter("X", "XYZ"));
+      list.append("XY");
+      list.insertBefore("XY", "X");
+      System.out.println(list);
+      list.delete("XY");
+      System.out.println(list);
+      list.delete("S");
+      System.out.println(list.delete("zz"));
+      System.out.println(list);
+
     }
 }

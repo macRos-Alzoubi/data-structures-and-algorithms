@@ -66,4 +66,68 @@ class AppTest {
     list.insert("G");
     assertEquals("Head -> G -> D -> A -> S -> NULL", list.toString(), "");
   }
+
+  @Test
+  public void addAtEnd(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+
+    assertEquals("Head -> X -> Y -> NULL", list.toString(),"Method should insert at the end of the liked list");
+  }
+
+  @Test
+  public void addMultipleAtEnd(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    assertEquals("Head -> X -> Y -> Z -> NULL", list.toString(),"Method should insert at the end of the liked list");
+  }
+
+  @Test
+  public void insertBefore(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    assertTrue(list.insertBefore("Y", "W"),"Method should insert 'W' before 'Y'");
+    System.out.println(list);
+  }
+
+  @Test
+  public void insertBeforeFirst(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    assertTrue(list.insertBefore("X", "W"),"Method should insert 'W' before 'X'");
+    System.out.println(list);
+  }
+
+  @Test
+  public void insertAfter(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    assertTrue(list.insertAfter("Y", "W"),"Method should insert 'W' after 'Y'");
+    System.out.println(list);
+  }
+
+  @Test
+  public void insertAfterLast(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    assertTrue(list.insertAfter("Z", "W"),"Method should insert 'W' after 'Z'");
+    System.out.println(list);
+  }
+
 }
