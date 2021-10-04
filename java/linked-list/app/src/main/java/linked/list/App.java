@@ -5,24 +5,30 @@ package linked.list;
 
 public class App {
 
-    public static void main(String[] args) {
-      LinkedList list = new LinkedList();
-      list.insert("S");
-      list.insert("A");
-      list.insert("D");
-      list.append("YY");
-      list.insert("G");
-      System.out.println(list);
-      System.out.println(list.insertBefore("D", "X"));
-      System.out.println(list.insertAfter("X", "XYZ"));
-      list.append("XY");
-      list.insertBefore("XY", "X");
-      System.out.println(list);
-      list.delete("XY");
-      System.out.println(list);
-      list.delete("S");
-      System.out.println(list.delete("zz"));
-      System.out.println(list);
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    list.insert("S");
+    list.insert("A");
+    list.insert("D");
+    list.append("YY");
+    list.insert("G");
+    System.out.println(list);
+    System.out.println(list.insertAfter("G", "GG"));
+    System.out.println(list.insertAfter("S", "GG"));
+    System.out.println(list.insertBefore("D", "X"));
+    System.out.println(list.insertAfter("X", "XYZ"));
+    System.out.println(list.insertBefore("YY","GX"));
+    System.out.println(list.insertBefore("G","GX"));
+    System.out.println(list);
 
-    }
+    list.append("XY");
+    list.insertBefore("XY", "X");
+    System.out.println(list);
+    list.delete("XY");
+    System.out.println(list);
+    list.delete("S");
+    System.out.println(list.delete("zz"));
+    System.out.println(list);
+
+  }
 }

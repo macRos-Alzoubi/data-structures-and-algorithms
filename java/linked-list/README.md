@@ -45,7 +45,13 @@ toString => prints the linked list collection
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
 
-![append](linked-list-insertions.jpg)
+![append](linked-list-insertions-append.jpg)
+
+![insertBefore](linked-list-insertions-insertBefore.jpg)
+
+![insertAfter](linked-list-insertions-insertAfter.jpg)
+
+
 
 ## Solution
 <!-- Show how to run your code, and examples of it in action -->

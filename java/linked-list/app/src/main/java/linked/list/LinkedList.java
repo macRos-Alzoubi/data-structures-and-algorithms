@@ -37,7 +37,7 @@ public class LinkedList {
   /**
    * Checks if a specific value exist in the liked list
    *
-   * @param value String value to be checked weather it exist in the linked list
+   * @param value String value to be checked whether it exist in the linked list
    * @return Boolean value if the passed value do exist in the linked list
    */
   public boolean includes(String value) {
@@ -72,10 +72,9 @@ public class LinkedList {
 
   /**
    * Insert a passed value before a given value if exist
-   *
    * @param value    String value to be used to insert another given value before it
    * @param newValue String value to be inserted before another given value
-   * @return Boolean value weather the passed value is inserted successfully or not
+   * @return Boolean value whether the passed value is inserted successfully or not
    */
   public boolean insertBefore(String value, String newValue) {
     Node newNode = new Node(newValue);
@@ -101,18 +100,17 @@ public class LinkedList {
 
   /**
    * Insert a passed value before a given value if exist
-   *
    * @param value    String value to be used to insert another given value after it
    * @param newValue String value to be inserted before another given value
-   * @return Boolean value weather the passed value is inserted successfully or not
+   * @return Boolean value whether the passed value is inserted successfully or not
    */
   public boolean insertAfter(String value, String newValue) {
     Node newNode = new Node(newValue);
     if (head == null)
       return false;
     else if (head.getData().equals(value)) {
+      newNode.setNext(head.getNext());
       head.setNext(newNode);
-      head = newNode;
       return true;
     } else {
       Node current = head;
@@ -128,6 +126,11 @@ public class LinkedList {
     }
   }
 
+  /**
+   * Delete a given value from the linked list
+   * @param value String value to be deleted from the linked list
+   * @return Boolean value indicates whether the value is successfully deleted or not
+   */
   public boolean delete(String value) {
     if (head == null)
       return false;
