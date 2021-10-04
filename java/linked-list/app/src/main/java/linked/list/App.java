@@ -19,7 +19,8 @@ public class App {
     System.out.println(list.insertAfter("X", "XYZ"));
     System.out.println(list.insertBefore("YY","GX"));
     System.out.println(list.insertBefore("G","GX"));
-    System.out.println(list);
+    System.out.println(list);;
+    System.out.println(list.kthFromEnd(111));
 
     list.append("XY");
     list.insertBefore("XY", "X");

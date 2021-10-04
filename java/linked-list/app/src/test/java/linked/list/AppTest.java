@@ -130,4 +130,56 @@ class AppTest {
     System.out.println(list);
   }
 
+  @Test
+  public void greaterThanLength(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+    String outOfRange = list.kthFromEnd(5);
+
+    assertEquals(outOfRange, list.kthFromEnd(5), "The Kth index should be within the list range");
+  }
+
+  @Test
+  public void KthTheSamAsLength(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    assertEquals("X", list.kthFromEnd(2), "The method should return the first element in the list");
+  }
+
+  @Test
+  public void negativeKth(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+
+    String exceptionMsg = list.kthFromEnd(5);
+    assertEquals("5 is out of the list range (0 - 2)",exceptionMsg, "The Kth should be valid value");
+  }
+
+  @Test
+  public void sizeOne(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    assertEquals("X", list.kthFromEnd(0), "The method should return X");
+  }
+
+  @Test
+  public void inMiddle(){
+    LinkedList list = new LinkedList();
+    list.append("X");
+    list.append("Y");
+    list.append("Z");
+    list.append("XX");
+    list.append("GH");
+    list.append("XY");
+
+    assertEquals("XX", list.kthFromEnd(2), "The method should return XX");
+  }
+
 }
