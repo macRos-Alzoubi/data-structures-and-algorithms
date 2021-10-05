@@ -23,7 +23,7 @@ class AppTest {
   }
 
   @Test
-  public void isFirst(){
+  public void isFirst() {
     LinkedList list = new LinkedList();
     list.insert("A");
     list.insert("B");
@@ -32,7 +32,7 @@ class AppTest {
   }
 
   @Test
-  public void insertMultiple(){
+  public void insertMultiple() {
     LinkedList list = new LinkedList();
     list.insert("A");
     list.insert("B");
@@ -43,14 +43,14 @@ class AppTest {
   }
 
   @Test
-  public void isFund(){
+  public void isFund() {
     LinkedList list = new LinkedList();
     list.insert("S");
     assertTrue(list.includes("S"), "The method should return true");
   }
 
   @Test
-  public void isNtFund(){
+  public void isNtFund() {
     LinkedList list = new LinkedList();
     list.insert("S");
     list.insert("A");
@@ -58,7 +58,7 @@ class AppTest {
   }
 
   @Test
-  public void getCollection(){
+  public void getCollection() {
     LinkedList list = new LinkedList();
     list.insert("S");
     list.insert("A");
@@ -68,70 +68,70 @@ class AppTest {
   }
 
   @Test
-  public void addAtEnd(){
+  public void addAtEnd() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
 
-    assertEquals("Head -> X -> Y -> NULL", list.toString(),"Method should insert at the end of the liked list");
+    assertEquals("Head -> X -> Y -> NULL", list.toString(), "Method should insert at the end of the liked list");
   }
 
   @Test
-  public void addMultipleAtEnd(){
+  public void addMultipleAtEnd() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
     list.append("Z");
 
-    assertEquals("Head -> X -> Y -> Z -> NULL", list.toString(),"Method should insert at the end of the liked list");
+    assertEquals("Head -> X -> Y -> Z -> NULL", list.toString(), "Method should insert at the end of the liked list");
   }
 
   @Test
-  public void insertBefore(){
+  public void insertBefore() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
     list.append("Z");
 
-    assertTrue(list.insertBefore("Y", "W"),"Method should insert 'W' before 'Y'");
+    assertTrue(list.insertBefore("Y", "W"), "Method should insert 'W' before 'Y'");
     System.out.println(list);
   }
 
   @Test
-  public void insertBeforeFirst(){
+  public void insertBeforeFirst() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
     list.append("Z");
 
-    assertTrue(list.insertBefore("X", "W"),"Method should insert 'W' before 'X'");
+    assertTrue(list.insertBefore("X", "W"), "Method should insert 'W' before 'X'");
     System.out.println(list);
   }
 
   @Test
-  public void insertAfter(){
+  public void insertAfter() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
     list.append("Z");
 
-    assertTrue(list.insertAfter("Y", "W"),"Method should insert 'W' after 'Y'");
+    assertTrue(list.insertAfter("Y", "W"), "Method should insert 'W' after 'Y'");
     System.out.println(list);
   }
 
   @Test
-  public void insertAfterLast(){
+  public void insertAfterLast() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
     list.append("Z");
 
-    assertTrue(list.insertAfter("Z", "W"),"Method should insert 'W' after 'Z'");
+    assertTrue(list.insertAfter("Z", "W"), "Method should insert 'W' after 'Z'");
     System.out.println(list);
   }
 
   @Test
-  public void greaterThanLength(){
+  public void greaterThanLength() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
@@ -142,7 +142,7 @@ class AppTest {
   }
 
   @Test
-  public void KthTheSamAsLength(){
+  public void KthTheSamAsLength() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
@@ -152,25 +152,25 @@ class AppTest {
   }
 
   @Test
-  public void negativeKth(){
+  public void negativeKth() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
     list.append("Z");
 
     String exceptionMsg = list.kthFromEnd(5);
-    assertEquals("5 is out of the list range (0 - 2)",exceptionMsg, "The Kth should be valid value");
+    assertEquals("5 is out of the list range (0 - 2)", exceptionMsg, "The Kth should be valid value");
   }
 
   @Test
-  public void sizeOne(){
+  public void sizeOne() {
     LinkedList list = new LinkedList();
     list.append("X");
     assertEquals("X", list.kthFromEnd(0), "The method should return X");
   }
 
   @Test
-  public void inMiddle(){
+  public void inMiddle() {
     LinkedList list = new LinkedList();
     list.append("X");
     list.append("Y");
@@ -180,6 +180,54 @@ class AppTest {
     list.append("XY");
 
     assertEquals("XX", list.kthFromEnd(2), "The method should return XX");
+  }
+
+  @Test
+  public void canZipStatic() {
+    LinkedList list = new LinkedList();
+    list.insert("S");
+    list.insert("A");
+    list.insert("D");
+    list.append("YY");
+    list.insert("G");
+
+    LinkedList list2 = new LinkedList();
+    list2.insert("Q");
+    list2.insert("D");
+    list2.insert("DD");
+    list2.append("FX");
+    list2.insertBefore("FX", "MN");
+
+    try {
+      LinkedList.zipLists(list, list2);
+      System.out.println(list);
+      assertEquals("Head -> G -> D -> A -> S -> YY -> DD -> D -> Q -> MN -> FX -> NULL", list.toString(),
+        "The method should concat two liked lists");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void canZip() {
+    LinkedList list = new LinkedList();
+    list.insert("S");
+    list.insert("A");
+    list.insert("D");
+
+    LinkedList list2 = new LinkedList();
+    list2.insert("Q");
+    list2.insert("D");
+    list2.insert("DD");
+
+    try {
+      LinkedList.zipLists(list, list2);
+      System.out.println(list);
+      assertEquals("Head -> D -> DD -> A -> D -> S -> Q -> NULL", list.toString(),
+        "The method should concat two liked lists");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
 }
