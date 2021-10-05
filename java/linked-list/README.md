@@ -62,6 +62,10 @@ Big O{
 
 ![kthFromEnd](linked-list-kth.jpg)
 
+![zip](linked-list-zip.jpg)
+
+
+
 ## Solution
 <!-- Show how to run your code, and examples of it in action -->
 
