@@ -11,24 +11,34 @@ public class App {
     list.insert("A");
     list.insert("D");
     list.append("YY");
-    list.insert("G");
-    System.out.println(list);
-    System.out.println(list.insertAfter("G", "GG"));
-    System.out.println(list.insertAfter("S", "GG"));
-    System.out.println(list.insertBefore("D", "X"));
-    System.out.println(list.insertAfter("X", "XYZ"));
-    System.out.println(list.insertBefore("YY","GX"));
-    System.out.println(list.insertBefore("G","GX"));
-    System.out.println(list);
+    list.insert("GGG");
+    list.insert("AX");
+    list.insert("DT");
+    list.append("ZZ");
+    list.insert("RTX");
 
-    list.append("XY");
-    list.insertBefore("XY", "X");
+    LinkedList list2 = new LinkedList();
+    list2.insert("Q");
+    list2.insert("D");
+    list2.insert("DD");
+    list2.append("FX");
+    list2.append("FR");
+    list2.append("TX");
+    list2.insertBefore("FX", "MN");
+    list2.append("JG");
+    list2.append("PL");
+    list2.append("OO");
+    list2.insertBefore("FX", "MX");
+
     System.out.println(list);
-    list.delete("XY");
-    System.out.println(list);
-    list.delete("S");
-    System.out.println(list.delete("zz"));
-    System.out.println(list);
+    System.out.println(list2);
+    LinkedList list3 = null;
+    try {
+      list3 = LinkedList.zipLists(list, list2);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    System.out.println("The Zipped version => " + list3);
 
   }
 }
