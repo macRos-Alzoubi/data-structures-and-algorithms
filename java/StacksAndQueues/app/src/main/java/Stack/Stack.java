@@ -45,7 +45,7 @@ public class Stack<T> {
   @Override
   public String toString() {
     String stackStr = getStackString();
-    return String.format("Top -> %s ->NULL",stackStr);
+    return String.format("Top -> %s -> NULL",stackStr);
   }
 
   private String getStackString() {
@@ -53,7 +53,9 @@ public class Stack<T> {
     if(!isEmpty()){
       Node<T> current = top;
       while(current != null){
-        StackStr.append(current.getData()).append(" ");
+        StackStr.append(current.getData());
+        if(current.getNext() != null)
+          StackStr.append(" -> ");
         current = current.getNext();
       }
     }

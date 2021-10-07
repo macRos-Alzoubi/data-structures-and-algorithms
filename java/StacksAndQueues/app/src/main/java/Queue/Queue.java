@@ -46,7 +46,7 @@ public class Queue<T> {
   @Override
   public String toString() {
     String queueStr = getQueueString();
-    return String.format("back -> %s <- front",queueStr);
+    return String.format("back <- %s <- front",queueStr);
   }
 
   private String getQueueString() {
@@ -54,7 +54,9 @@ public class Queue<T> {
     if(!isEmpty()){
       Node<T> current = front;
       while(current != null){
-        queueStr.append(current.getData()).append(" ");
+        queueStr.append(current.getData());
+        if(current.getNext() != null)
+          queueStr.append(" <- ");
         current = current.getNext();
       }
     }
