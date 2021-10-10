@@ -13,6 +13,8 @@ public class Stack<T> {
     return top;
   }
 
+  public void setTop(Node<T> top){ this.top = top;}
+
   public void push(T data) {
     Node<T> node = new Node<>(data);
     if (!isEmpty())

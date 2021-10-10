@@ -3,13 +3,27 @@
  */
 package StacksAndQueues;
 
+import PseudoQueue.PseudoQueue;
 import Queue.Queue;
 import Stack.Stack;
 
 public class App {
   public static void main(String[] args) {
-    queueDemo();
-    stackDemo();
+    PseudoQueue<String> queue = new PseudoQueue<String>();
+    queue.enqueue("added");
+    queue.enqueue("Max");
+    queue.enqueue("Mac");
+    queue.enqueue("Mohammad");
+    queue.enqueue("Tariq");
+    System.out.println(queue);
+    try {
+      System.out.println(queue.dequeue());
+      System.out.println(queue);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+//    queueDemo();
+//    stackDemo();
   }
 
   public static void queueDemo() {

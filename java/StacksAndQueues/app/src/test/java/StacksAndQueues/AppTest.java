@@ -3,6 +3,7 @@
  */
 package StacksAndQueues;
 
+import PseudoQueue.PseudoQueue;
 import Queue.Queue;
 import Stack.Stack;
 import org.junit.jupiter.api.Test;
@@ -194,4 +195,29 @@ class AppTest {
       assertEquals("Can't peek empty Queue!", e.getMessage(), e.getMessage());
     }
   }
+
+  @Test
+  public void pseudoQueueEnqueue() {
+    PseudoQueue<Integer> queue = new PseudoQueue<Integer>();
+    queue.enqueue(45);
+    queue.enqueue(5);
+    queue.enqueue(9);
+    System.out.println(queue);
+    assertEquals("Front <- 45 <- 5 <- 9 <- Back", queue.toString(),
+      "Enqueue method should insert new node at the end of the Queue");
+  }
+
+  @Test
+  public void pseudoQueueDequeue(){
+    PseudoQueue<Integer> queue = new PseudoQueue<Integer>();
+    queue.enqueue(45);
+    queue.enqueue(5);
+    queue.enqueue(9);
+    try {
+      assertEquals(45, queue.dequeue(), "Dequeue methode should remove node from the front of the Queue");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 }
