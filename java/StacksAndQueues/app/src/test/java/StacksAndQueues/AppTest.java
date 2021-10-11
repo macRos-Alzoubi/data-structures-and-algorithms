@@ -7,6 +7,10 @@ import PseudoQueue.PseudoQueue;
 import Queue.Queue;
 import Stack.Stack;
 import org.junit.jupiter.api.Test;
+import stackQueueAnimalShelter.Animal.Animal;
+import stackQueueAnimalShelter.Animal.Cat;
+import stackQueueAnimalShelter.Animal.Dog;
+import stackQueueAnimalShelter.AnimalShelter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -208,7 +212,7 @@ class AppTest {
   }
 
   @Test
-  public void pseudoQueueDequeue(){
+  public void pseudoQueueDequeue() {
     PseudoQueue<Integer> queue = new PseudoQueue<Integer>();
     queue.enqueue(45);
     queue.enqueue(5);
@@ -218,6 +222,37 @@ class AppTest {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  @Test
+  public void canEnqueueAnimal() {
+    AnimalShelter animalShelter = new AnimalShelter();
+    Animal dog = new Dog("patio", "tacoma", 3);
+    Animal dog2 = new Dog("jackson", "petcy", 2);
+    Animal cat = new Cat("klara", "wafillo", 4);
+
+    animalShelter.enqueue(dog);
+    animalShelter.enqueue(dog2);
+    animalShelter.enqueue(cat);
+
+    assertEquals("AnimalShelter{dogQueue=Front -> Dog{name='patio', age=3, breed='tacoma'} -> Dog{name='jackson', age=2, breed='petcy'} -> Back, catQueue=Front -> Cat{name='klara', age=4, breed='wafillo'} -> Back}",
+      animalShelter.toString(), "Method should enqueue animal to the queue");
+  }
+
+  @Test
+  public void canDequeueAnimal(){
+    AnimalShelter animalShelter = new AnimalShelter();
+    Animal dog = new Dog("patio", "tacoma", 3);
+    Animal dog2 = new Dog("jackson", "petcy", 2);
+    Animal cat = new Cat("klara", "wafillo", 4);
+
+    animalShelter.enqueue(dog);
+    animalShelter.enqueue(dog2);
+    animalShelter.enqueue(cat);
+
+//    System.out.println(animalShelter.dequeue("Cat"));
+    assertEquals("Cat{name='klara', age=4, breed='wafillo'}", animalShelter.dequeue("Cat").toString(),
+      "The Method should dequeue an animal from the end front of the queue");
   }
 
 }
