@@ -13,10 +13,40 @@ import stackQueueAnimalShelter.AnimalShelter;
 
 public class App {
   public static void main(String[] args) {
-    stackQueueShelter();
+    System.out.println(validateBrackets("(){}[[]]"));
+    System.out.println(validateBrackets("{(})"));
+    System.out.println(validateBrackets("(]("));
+    System.out.println(validateBrackets("[({}]"));
+    System.out.println(validateBrackets("{}{Code}[Fellows](())"));
+//    stackQueueShelter();
 //    stacksAndQueues();
 //    queueDemo();
 //    stackDemo();
+  }
+
+  public static boolean validateBrackets(String bracketsStr) {
+    if (bracketsStr.length() > 1) {
+      String poppedStr;
+      Stack<String> stack = new Stack<String>();
+      for(String character: bracketsStr.split(""))
+        if(character.equals("{") || character.equals("[") || character.equals("("))
+          stack.push(character);
+        else if(character.equals("}") || character.equals("]") || character.equals(")")) {
+          try {
+            poppedStr = stack.pop();
+            if(poppedStr.equals("{") && !character.equals("}"))
+              return false;
+            else if(poppedStr.equals("[") && !character.equals("]"))
+              return false;
+            else if(poppedStr.equals("(") && !character.equals(")"))
+              return false;
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+        }
+      return true;
+    } else
+      return false;
   }
 
   private static void stackQueueShelter() {
