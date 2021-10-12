@@ -9,3 +9,7 @@
 # stack-queue-animal-shelter
 
 [stack-queue-animal-shelter](app/src/main/resources/stack-queue-animal-shelter-README.md)
+
+# stack-queue-brackets
+
+[stack-queue-brackets](app/src/main/resources/validate-brackets_README.md)

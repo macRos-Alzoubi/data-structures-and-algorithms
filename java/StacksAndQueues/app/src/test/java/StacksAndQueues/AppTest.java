@@ -12,8 +12,7 @@ import stackQueueAnimalShelter.Animal.Cat;
 import stackQueueAnimalShelter.Animal.Dog;
 import stackQueueAnimalShelter.AnimalShelter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
 
@@ -253,6 +252,11 @@ class AppTest {
 //    System.out.println(animalShelter.dequeue("Cat"));
     assertEquals("Cat{name='klara', age=4, breed='wafillo'}", animalShelter.dequeue("Cat").toString(),
       "The Method should dequeue an animal from the end front of the queue");
+  }
+
+  @Test
+  public void bracketsValidator(){
+    assertFalse(App.validateBrackets("{(})"), "Method should return true if brackets are balanced");
   }
 
 }
