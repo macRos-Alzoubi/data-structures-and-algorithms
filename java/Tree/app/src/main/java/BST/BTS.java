@@ -16,6 +16,14 @@ public class BTS<T extends Comparable<T>> {
       add(data, top);
   }
 
+  public Node<T> getTop() {
+    return top;
+  }
+
+  public void setTop(Node<T> top) {
+    this.top = top;
+  }
+
   private void add(T data, Node<T> root) {
 
     if (data.compareTo(root.getData()) > 0)
