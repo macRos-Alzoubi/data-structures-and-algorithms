@@ -3,8 +3,35 @@
  */
 package Tree;
 
+import BST.BTS;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
+  @Test
+  public void canInstantiate(){
+    BTS<Integer> integerBTS = new BTS<>();
+
+    assertTrue(integerBTS.isEmpty());
+  }
+
+  @Test
+  public void hasOneNode(){
+    BTS<Integer> integerBTS = new BTS<>();
+
+    integerBTS.Add(45);
+    assertFalse(integerBTS.isEmpty());
+  }
+
+  @Test
+  public void canAddLiftAndRightNode(){
+    BTS<Integer> integerBTS = new BTS<>();
+
+    integerBTS.Add(45);
+    integerBTS.Add(50);
+    integerBTS.Add(43);
+
+    assertEquals(50, integerBTS.getTop().getRight().getData(),"The Method should add to the lift and to the right sides");
+  }
+
 }
