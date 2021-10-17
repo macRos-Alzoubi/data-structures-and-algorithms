@@ -10,12 +10,12 @@ public class App {
   public static void main(String[] args) {
 
     BTS<Integer> integerBTS = new BTS<>();
-    integerBTS.Add(44);
-    integerBTS.Add(4);
-    integerBTS.Add(63);
-    integerBTS.Add(22);
-    integerBTS.Add(34);
-    integerBTS.Add(72);
+    integerBTS.add(44);
+    integerBTS.add(4);
+    integerBTS.add(63);
+    integerBTS.add(22);
+    integerBTS.add(34);
+    integerBTS.add(72);
     System.out.println(integerBTS.contains(55));
     System.out.println(integerBTS.contains(4));
   }

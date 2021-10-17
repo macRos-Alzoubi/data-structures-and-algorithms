@@ -19,7 +19,7 @@ class AppTest {
   public void hasOneNode(){
     BTS<Integer> integerBTS = new BTS<>();
 
-    integerBTS.Add(45);
+    integerBTS.add(45);
     assertFalse(integerBTS.isEmpty());
   }
 
@@ -27,10 +27,11 @@ class AppTest {
   public void canAddLiftAndRightNode(){
     BTS<Integer> integerBTS = new BTS<>();
 
-    integerBTS.Add(45);
-    integerBTS.Add(50);
-    integerBTS.Add(43);
+    integerBTS.add(45);
+    integerBTS.add(50);
+    integerBTS.add(43);
 
     assertEquals(50, integerBTS.getTop().getRight().getData(),"The Method should add to the lift and to the right sides");
+    assertEquals(43, integerBTS.getTop().getLeft().getData(),"The Method should add to the lift and to the right sides");
   }
 }

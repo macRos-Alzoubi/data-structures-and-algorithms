@@ -9,19 +9,11 @@ public class BTS<T extends Comparable<T>> {
     top = null;
   }
 
-  public void Add(T data) {
+  public void add(T data) {
     if (isEmpty())
       top = new Node<T>(data);
     else
       add(data, top);
-  }
-
-  public Node<T> getTop() {
-    return top;
-  }
-
-  public void setTop(Node<T> top) {
-    this.top = top;
   }
 
   private void add(T data, Node<T> root) {
@@ -38,22 +30,26 @@ public class BTS<T extends Comparable<T>> {
         root.setLeft(new Node<T>(data));
   }
 
-  public boolean contains(T data){
-    if(isEmpty())
+  public boolean contains(T data) {
+    if (isEmpty())
       return false;
     return contains(data, top);
   }
 
-  private boolean contains(T data, Node<T> root){
+  private boolean contains(T data, Node<T> root) {
 
-    if(root == null)
+    if (root == null)
       return false;
-    if(data.compareTo(root.getData()) == 0)
+    if (data.compareTo(root.getData()) == 0)
       return true;
-    else if(data.compareTo(root.getData()) > 0)
+    else if (data.compareTo(root.getData()) > 0)
       return contains(data, root.getRight());
     else
       return contains(data, root.getLeft());
+  }
+
+  public Node<T> getTop() {
+    return top;
   }
 
   public boolean isEmpty() {
