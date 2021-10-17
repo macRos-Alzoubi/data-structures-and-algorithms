@@ -31,7 +31,22 @@ class AppTest {
     integerBTS.add(50);
     integerBTS.add(43);
 
-    assertEquals(50, integerBTS.getTop().getRight().getData(),"The Method should add to the lift and to the right sides");
-    assertEquals(43, integerBTS.getTop().getLeft().getData(),"The Method should add to the lift and to the right sides");
+    assertEquals(50, integerBTS.getRoot().getRight().getData(),"The Method should add to the lift and to the right sides");
+    assertEquals(43, integerBTS.getRoot().getLeft().getData(),"The Method should add to the lift and to the right sides");
+  }
+
+  @Test
+  public void findMaxTester(){
+    BTS<Integer> integerBTS = new BTS<>();
+
+    integerBTS.add(45);
+    integerBTS.add(50);
+    integerBTS.add(43);
+
+    try {
+      assertEquals(50, integerBTS.findMax(), "The method should return the maximum value");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

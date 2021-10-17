@@ -18,5 +18,10 @@ public class App {
     integerBTS.add(72);
     System.out.println(integerBTS.contains(55));
     System.out.println(integerBTS.contains(4));
+    try {
+      System.out.println(integerBTS.findMax());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

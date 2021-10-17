@@ -3,17 +3,25 @@ package BST;
 import Node.Node;
 
 public class BTS<T extends Comparable<T>> {
-  Node<T> top;
+  Node<T> root;
 
   public BTS() {
-    top = null;
+    root = null;
+  }
+
+  public Node<T> getRoot() {
+    return root;
+  }
+
+  public boolean isEmpty() {
+    return root == null;
   }
 
   public void add(T data) {
     if (isEmpty())
-      top = new Node<T>(data);
+      root = new Node<T>(data);
     else
-      add(data, top);
+      add(data, root);
   }
 
   private void add(T data, Node<T> root) {
@@ -33,7 +41,7 @@ public class BTS<T extends Comparable<T>> {
   public boolean contains(T data) {
     if (isEmpty())
       return false;
-    return contains(data, top);
+    return contains(data, root);
   }
 
   private boolean contains(T data, Node<T> root) {
@@ -48,12 +56,18 @@ public class BTS<T extends Comparable<T>> {
       return contains(data, root.getLeft());
   }
 
-  public Node<T> getTop() {
-    return top;
+  public T findMax() throws Exception {
+    if (isEmpty())
+      throw new Exception("Tree is empty!");
+    else
+      return findMax(root);
   }
 
-  public boolean isEmpty() {
-    return top == null;
+  private T findMax(Node<T> root) {
+    if(root.getRight() != null)
+      return findMax(root.getRight());
+    else
+      return root.getData();
   }
 
 }
