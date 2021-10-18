@@ -5,18 +5,19 @@ package Tree;
 
 import BST.BTS;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
   @Test
-  public void canInstantiate(){
+  public void canInstantiate() {
     BTS<Integer> integerBTS = new BTS<>();
 
     assertTrue(integerBTS.isEmpty());
   }
 
   @Test
-  public void hasOneNode(){
+  public void hasOneNode() {
     BTS<Integer> integerBTS = new BTS<>();
 
     integerBTS.add(45);
@@ -24,19 +25,19 @@ class AppTest {
   }
 
   @Test
-  public void canAddLiftAndRightNode(){
+  public void canAddLiftAndRightNode() {
     BTS<Integer> integerBTS = new BTS<>();
 
     integerBTS.add(45);
     integerBTS.add(50);
     integerBTS.add(43);
 
-    assertEquals(50, integerBTS.getRoot().getRight().getData(),"The Method should add to the lift and to the right sides");
-    assertEquals(43, integerBTS.getRoot().getLeft().getData(),"The Method should add to the lift and to the right sides");
+    assertEquals(50, integerBTS.getRoot().getRight().getData(), "The Method should add to the lift and to the right sides");
+    assertEquals(43, integerBTS.getRoot().getLeft().getData(), "The Method should add to the lift and to the right sides");
   }
 
   @Test
-  public void findMaxTester(){
+  public void findMaxTester() {
     BTS<Integer> integerBTS = new BTS<>();
 
     integerBTS.add(45);
@@ -45,6 +46,23 @@ class AppTest {
 
     try {
       assertEquals(50, integerBTS.findMax(), "The method should return the maximum value");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void breadthFirstTester() {
+    BTS<Integer> integerBTS = new BTS<>();
+    integerBTS.add(44);
+    integerBTS.add(4);
+    integerBTS.add(63);
+    integerBTS.add(22);
+    integerBTS.add(34);
+    integerBTS.add(72);
+
+    try {
+      assertEquals("[Node{data=44}, Node{data=4}, Node{data=63}, Node{data=22}, Node{data=72}, Node{data=34}]", BTS.breadthFirst(integerBTS).toString());
     } catch (Exception e) {
       e.printStackTrace();
     }
