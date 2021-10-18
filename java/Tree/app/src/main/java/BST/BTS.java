@@ -2,6 +2,11 @@ package BST;
 
 import Node.Node;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class BTS<T extends Comparable<T>> {
   Node<T> root;
 
@@ -64,10 +69,36 @@ public class BTS<T extends Comparable<T>> {
   }
 
   private T findMax(Node<T> root) {
-    if(root.getRight() != null)
+    if (root.getRight() != null)
       return findMax(root.getRight());
     else
       return root.getData();
+  }
+
+  public static List<Node<Integer>> breadthFirst(BTS<Integer> tree) throws Exception {
+    if (tree.isEmpty())
+      throw new Exception("Tree is empty!");
+    return breadthFirst(tree.getRoot());
+  }
+
+  private static List<Node<Integer>> breadthFirst(Node<Integer> node) {
+    Queue<Node<Integer>> queue = new LinkedList<>();
+    List<Node<Integer>> list = new ArrayList<>();
+    queue.add(node);
+
+    while (!queue.isEmpty()) {
+
+      node  = queue.remove();
+      list.add(node);
+
+      if (node.getLeft() != null)
+        queue.add(node.getLeft());
+
+      if (node.getRight() != null)
+        queue.add(node.getRight());
+    }
+
+    return list;
   }
 
 }

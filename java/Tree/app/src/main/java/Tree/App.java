@@ -16,12 +16,17 @@ public class App {
     integerBTS.add(22);
     integerBTS.add(34);
     integerBTS.add(72);
-    System.out.println(integerBTS.contains(55));
-    System.out.println(integerBTS.contains(4));
     try {
-      System.out.println(integerBTS.findMax());
+      System.out.println(BTS.breadthFirst(integerBTS));
     } catch (Exception e) {
       e.printStackTrace();
     }
+//    System.out.println(integerBTS.contains(55));
+//    System.out.println(integerBTS.contains(4));
+//    try {
+//      System.out.println(integerBTS.findMax());
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
   }
 }
