@@ -5,7 +5,7 @@ Tree Breadth first search implementation in java
 
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
-
+![Breadth-first](tree-breadth-first.jpg)
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 Big O ==> Space: O(n), Tome: O(n)
