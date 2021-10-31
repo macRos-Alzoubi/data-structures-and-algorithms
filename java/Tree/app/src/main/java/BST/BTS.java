@@ -88,7 +88,7 @@ public class BTS<T extends Comparable<T>> {
 
     while (!queue.isEmpty()) {
 
-      node  = queue.remove();
+      node = queue.remove();
       list.add(node);
 
       if (node.getLeft() != null)
@@ -99,6 +99,24 @@ public class BTS<T extends Comparable<T>> {
     }
 
     return list;
+  }
+
+  public int oddNumSum() {
+    int sum = 0;
+    if (isEmpty())
+      return -1;
+    else {
+      try {
+        List<Node<Integer>> nodeList = breadthFirst((BTS<Integer>) this);
+
+        for(Node<Integer> node : nodeList)
+          if(node.getData() % 2 != 0)
+            sum += node.getData();
+      } catch (Exception e) {
+        System.out.println(e.getMessage());
+      }
+    }
+    return sum;
   }
 
 }

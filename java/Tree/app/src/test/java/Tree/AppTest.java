@@ -4,7 +4,11 @@
 package Tree;
 
 import BST.BTS;
+import K_Ary_Tree.KAryTree;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,5 +70,22 @@ class AppTest {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  @Test
+  public void fizzBuzzTree() {
+    List<Integer> list = new ArrayList<>();
+    list.add(10);
+    list.add(5);
+    list.add(15);
+    list.add(3);
+    list.add(2);
+    list.add(3);
+    list.add(7);
+    list.add(45);
+    KAryTree<Integer> kAryTree = new KAryTree<>(list, 3);
+    kAryTree.treeFizzBuzz();
+    assertEquals("KAryTree{KAryTreeNodes=[KAryNode{data=Buzz}, KAryNode{data=Buzz}, KAryNode{data=FizzBuzz}, KAryNode{data=Fizz}, KAryNode{data=2}, KAryNode{data=Fizz}, KAryNode{data=7}, KAryNode{data=FizzBuzz}]}",
+      kAryTree.toString());
   }
 }
