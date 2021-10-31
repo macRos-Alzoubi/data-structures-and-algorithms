@@ -4,6 +4,10 @@
 package Tree;
 
 import BST.BTS;
+import K_Ary_Tree.KAryTree;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
 
@@ -16,17 +20,50 @@ public class App {
     integerBTS.add(22);
     integerBTS.add(34);
     integerBTS.add(72);
+    integerBTS.add(13);
+
+//    code_16(integerBTS);
+//    code_17(integerBTS);
+      code_18();
+//    code_19(integerBTS);
+  }
+
+  private static void code_18() {
+    List<Integer> list = new ArrayList<>();
+    list.add(10);
+    list.add(5);
+    list.add(15);
+    list.add(3);
+    list.add(2);
+    list.add(3);
+    list.add(7);
+    list.add(45);
+    KAryTree<Integer> kAryTree = new KAryTree<>(list, 3);
+    kAryTree.postorder(kAryTree.getRoot());
+    System.out.println();
+    kAryTree.treeFizzBuzz();
+    kAryTree.postorder(kAryTree.getRoot());
+  }
+
+  public static void code_16(BTS<Integer> integerBTS){
+    System.out.println(integerBTS.contains(55));
+    System.out.println(integerBTS.contains(4));
+  }
+  public static void code_17(BTS<Integer> integerBTS){
     try {
-      System.out.println(BTS.breadthFirst(integerBTS));
+      System.out.println(integerBTS.findMax());
     } catch (Exception e) {
       e.printStackTrace();
     }
-//    System.out.println(integerBTS.contains(55));
-//    System.out.println(integerBTS.contains(4));
-//    try {
-//      System.out.println(integerBTS.findMax());
-//    } catch (Exception e) {
-//      e.printStackTrace();
-//    }
+  }
+
+  public static void code_19(BTS<Integer> integerBTS){
+    try {
+      System.out.println(BTS.breadthFirst(integerBTS));
+      System.out.println(integerBTS.oddNumSum());
+      ;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
