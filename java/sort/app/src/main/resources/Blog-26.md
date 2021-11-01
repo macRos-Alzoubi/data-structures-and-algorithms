@@ -17,11 +17,11 @@ InsertionSort(int[] arr)
 
 ## Trace
 
-![blog](blog.jpg)
+![blog](blog_27.jpg)
 
 ## Efficency
 
 Big O{
-  Space: O(1),
-  Time:  O(n)
+  Space: O(n),
+  Time:  O(n log(n))
 }
