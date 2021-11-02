@@ -10,5 +10,5 @@
 
 [code-28](app/src/main/resources/quickSort.md)
 
-[code-27-blog](app/src/main/resources/blog-28.md)
+[code-28-blog](app/src/main/resources/blog-28.md)
 
