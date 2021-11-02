@@ -22,4 +22,12 @@ class AppTest {
 
     assertArrayEquals(array,new int[]{4,8,15,16,23,42});
   }
+
+  @Test
+  public void quickSort(){
+    int[] array = new int[]{8,4,23,42,16,15};
+    App.quickSort(array);
+
+    assertArrayEquals(array,new int[]{4,8,15,16,23,42});
+  }
 }

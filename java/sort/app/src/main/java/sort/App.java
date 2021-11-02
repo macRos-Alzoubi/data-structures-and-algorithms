@@ -8,9 +8,10 @@ import java.util.Arrays;
 public class App {
   public static void main(String[] args) {
     int[] array = new int[]{8,4,23,42,16,15};
-
+//    int[] array = new int[]{5, 2};
 //    insertionSort(array);
-    mergeSort(array);
+//    mergeSort(array);
+    quickSort(array);
     System.out.println(Arrays.toString(array));
   }
 
@@ -77,5 +78,40 @@ public class App {
       System.out.println( "in merge right: " + Arrays.toString(left));
       System.out.println( "in merge array: " + Arrays.toString(arr));
     }
+  }
+
+  public static void quickSort(int[] array){
+    if(array.length > 0)
+      quickSort(array, 0, array.length - 1);
+  }
+
+  public static void quickSort(int[] arr, int left, int right){
+    if(left < right){
+      int p = partition(arr, left, right);
+
+      quickSort(arr, left, p - 1);
+      quickSort(arr, p + 1, right);
+    }
+  }
+
+  private static int partition(int[] arr, int left, int right) {
+    int pivot = arr[right];
+
+    int low = left - 1;
+    for(int i = left; i < right; i++){
+      if(arr[i] <= pivot){
+        low++;
+        swap(arr, i, low);
+      }
+    }
+
+    swap(arr, right, low + 1);
+    return low + 1;
+  }
+
+  private static void swap(int[] arr, int i, int low) {
+    int temp = arr[i];
+    arr[i] = arr[low];
+    arr[low] = temp;
   }
 }
