@@ -5,15 +5,49 @@ package hashTable;
 
 import hashTable.structure.HashTable;
 
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class App {
 
   public static void main(String[] args) {
+    String str = "Once upon a time, there was a brave princess who...";
+//    code_30();
+    try {
+      System.out.println(repeatedWord(str));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static String repeatedWord(String str) throws Exception {
+    Map<String, Integer> repeatedMap = new LinkedHashMap<>();
+    str = str.toLowerCase();
+    String[] strArr = str.split("[\\p{Punct}\\s]+");
+
+    for (String s : strArr) {
+      if (repeatedMap.containsKey(s))
+        repeatedMap.put(s, repeatedMap.get(s) + 1);
+      else
+        repeatedMap.put(s, 1);
+    }
+
+    for (Map.Entry<String, Integer> entry : repeatedMap.entrySet())
+      if (entry.getValue() > 1)
+        return entry.getKey();
+
+
+    return "";
+  }
+
+  private static void code_30() {
     HashTable<String, Integer> hashTable = new HashTable<>();
 
     try {
-      hashTable.add("Tariq",100);
-      hashTable.add("Mohammad",75);
-      hashTable.add("Rahaf",120);
+      hashTable.add("Tariq", 100);
+      hashTable.add("Mohammad", 75);
+      hashTable.add("Rahaf", 120);
     } catch (Exception e) {
       e.printStackTrace();
     }
