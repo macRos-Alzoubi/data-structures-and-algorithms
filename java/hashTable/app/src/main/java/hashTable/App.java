@@ -5,21 +5,70 @@ package hashTable;
 
 import hashTable.structure.HashTable;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class App {
 
   public static void main(String[] args) {
-    String str = "Once upon a time, there was a brave princess who...";
+//    String str = "Once upon a time, there was a brave princess who...";
 //    code_30();
+//    try {
+//      System.out.println(repeatedWord(str));
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
+
+    Map<Integer, Integer> treeMap = new TreeMap<>();
+    treeMap.put(100, 1);
+    treeMap.put(220, 1);
+    treeMap.put(75, 1);
+    treeMap.put(88, 1);
+    treeMap.put(150, 1);
+    treeMap.put(45, 1);
+    treeMap.put(66, 1);
+    treeMap.put(125, 1);
+
+
+    Map<Integer, Integer> treeMap2 = new TreeMap<>();
+    treeMap2.put(150, 1);
+    treeMap2.put(220, 1);
+    treeMap2.put(76, 1);
+    treeMap2.put(69, 1);
+    treeMap2.put(15, 1);
+    treeMap2.put(45, 1);
+    treeMap2.put(66, 1);
+    treeMap2.put(125, 1);
+
+    List<Integer> duplicate = null;
     try {
-      System.out.println(repeatedWord(str));
+      duplicate = tree_intersection(treeMap, treeMap2);
     } catch (Exception e) {
       e.printStackTrace();
     }
+
+    System.out.println(duplicate);
+
   }
+
+  public static List<Integer> tree_intersection(Map<Integer, Integer> map1, Map<Integer, Integer> map2) throws Exception {
+    HashTable<Integer, Integer> hashTable = new HashTable<>();
+    List<Integer> commonElementList = new ArrayList<>();
+
+    for (Map.Entry<Integer, Integer> entry : map1.entrySet())
+      hashTable.add(entry.getKey(), entry.getValue());
+
+    for (Map.Entry<Integer, Integer> entry : map2.entrySet()) {
+      if (hashTable.contains(entry.getKey()))
+        commonElementList.add(entry.getKey());
+      else
+        hashTable.add(entry.getKey(), entry.getValue());
+    }
+
+    System.out.println(hashTable);
+    System.out.println(commonElementList);
+    return commonElementList;
+  }
+
 
   public static String repeatedWord(String str) throws Exception {
     Map<String, Integer> repeatedMap = new LinkedHashMap<>();

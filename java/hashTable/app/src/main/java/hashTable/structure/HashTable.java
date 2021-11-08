@@ -42,13 +42,13 @@ public class HashTable<K, V> {
     }
   }
 
-  public void add(K key, V value) throws Exception {
+  public void add(K key, V value) {
     int index = hash(key);
     int hashCode = hashCode(key);
     Node<K, V> head = bucketArray.get(index);
 
-    while (head != null){
-      if(head.getKey().equals(key) && head.getHashCode() == hashCode) {
+    while (head != null) {
+      if (head.getKey().equals(key) && head.getHashCode() == hashCode) {
         head.setValue(value);
         return;
       }
@@ -81,7 +81,10 @@ public class HashTable<K, V> {
   }
 
   public boolean contains(K key) throws Exception {
-    return get(key) != null;
+    if(isEmpty())
+      return false;
+    else
+      return get(key) != null;
   }
 
   private int hash(K key){
