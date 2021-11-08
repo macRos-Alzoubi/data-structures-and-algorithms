@@ -106,7 +106,7 @@ class AppTest {
   void returnStr(){
     String str = "Once upon a time, there was a brave princess who...";
     try {
-      assertTrue(App.code_31(str) instanceof String);
+      assertTrue(App.repeatedWord(str) instanceof String);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -116,7 +116,7 @@ class AppTest {
   void returnStrNutNull(){
     String str = "Once upon a time, there was a brave princess who...";
     try {
-      assertTrue(App.code_31(str) != null);
+      assertTrue(App.repeatedWord(str) != null);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -126,7 +126,7 @@ class AppTest {
   void returnRepeated(){
     String str = "Once upon a time, there was a brave princess who...";
     try {
-      assertEquals("a", App.code_31(str));
+      assertEquals("a", App.repeatedWord(str));
     } catch (Exception e) {
       e.printStackTrace();
     }
