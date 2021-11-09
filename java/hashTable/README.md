@@ -8,3 +8,6 @@
 
 ## code-32
 [code-32](app/src/main/resources/tree_intersection.md)
+
+## code-33
+[code-33](app/src/main/resources/left_join.md)
