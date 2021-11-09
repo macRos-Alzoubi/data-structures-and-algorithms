@@ -18,6 +18,48 @@ public class App {
 //      e.printStackTrace();
 //    }
 
+//    code_32();
+    code_33();
+
+  }
+
+  public static void code_33(){
+    Map<String, String> map1 = new HashMap();
+    Map<String, String> map2 = new HashMap();
+
+    map1.put("fond", "enamored");
+    map1.put("wrath", "anger");
+    map1.put("diligent", "employed");
+    map1.put("outfit", "garb");
+    map1.put("guide", "usher");
+
+    map2.put("fond", "averse");
+    map2.put("wrath", "delight");
+    map2.put("diligent", "idle");
+    map2.put("flow", "jam");
+    map2.put("guide", "follow");
+
+    System.out.println(leftJoin(map1, map2));
+  }
+
+  private static List<List<String>> leftJoin(Map<String, String> map1, Map<String, String> map2) {
+    List<List<String>> joinList = new ArrayList<>();
+    List<String> innerList = new ArrayList<>();
+
+    for(Map.Entry<String, String> entry: map1.entrySet()){
+      innerList.add(entry.getKey());
+      innerList.add(entry.getValue());
+      if(map2.containsKey(entry.getKey()))
+        innerList.add(map2.get(entry.getKey()));
+      else
+        innerList.add(null);
+      joinList.add(innerList);
+      innerList = new ArrayList<>();
+    }
+    return joinList;
+  }
+
+  public static void code_32() {
     Map<Integer, Integer> treeMap = new TreeMap<>();
     treeMap.put(100, 1);
     treeMap.put(220, 1);
@@ -47,7 +89,6 @@ public class App {
     }
 
     System.out.println(duplicate);
-
   }
 
   public static List<Integer> tree_intersection(Map<Integer, Integer> map1, Map<Integer, Integer> map2) throws Exception {
