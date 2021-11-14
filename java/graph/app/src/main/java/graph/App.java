@@ -10,22 +10,26 @@ import java.util.Map;
 public class App {
 
     public static void main(String[] args) {
-      Graph<String> stringGraph = new Graph<>();
-      stringGraph.addNode("A");
-      stringGraph.addNode("B");
-      stringGraph.addNode("C");
-      stringGraph.addNode("D");
+      Graph<String> graph = new Graph<>();
+      graph.addNode("A");
+      graph.addNode("B");
+      graph.addNode("C");
+      graph.addNode("D");
 
-      stringGraph.addEdge("A", "B", 25);
-      stringGraph.addEdge("A", "C", 15);
-      stringGraph.addEdge("C", "D", 35);
+      graph.addEdge("A", "B", 25);
+      graph.addEdge("A", "C", 15);
+      graph.addEdge("C", "D", 35);
 
-      Map<String, Integer> neighbors = stringGraph.getNeighbors("A");
-      System.out.println(neighbors);
-      Map<String, Integer> neighbors2 = stringGraph.getNeighbors("C");
-      System.out.println(neighbors2);
-      System.out.println(stringGraph.size());
-      System.out.println(stringGraph);
-      System.out.println(stringGraph.getNodes());
+      System.out.println(graph);
+      System.out.println("\n");
+      System.out.println(graph.breadthFirstSearch("F"));
+
+//      Map<String, Integer> neighbors = graph.getNeighbors("A");
+//      System.out.println(neighbors);
+//      Map<String, Integer> neighbors2 = graph.getNeighbors("C");
+//      System.out.println(neighbors2);
+//      System.out.println(graph.size());
+//      System.out.println(graph);
+//      System.out.println(graph.getNodes());
     }
 }

@@ -18,9 +18,16 @@ public class Node<K> {
     StringBuilder edges = new StringBuilder();
     for (Map.Entry<K, Map<K, Integer>> entry : getEdges().entrySet())
       for (Map.Entry<K, Integer> innerEntry : entry.getValue().entrySet())
-        edges.append(" -> {").append(innerEntry.getKey()).append(", ").append(innerEntry.getValue()).append("}");
+        edges.append(" {").append(innerEntry.getKey()).append(", ").append(innerEntry.getValue()).append("}");
 
     return edges;
+  }
+
+  public K getLiable(){
+    for(K key: edges.keySet()){
+      return key;
+    }
+    return null;
   }
 
   @Override

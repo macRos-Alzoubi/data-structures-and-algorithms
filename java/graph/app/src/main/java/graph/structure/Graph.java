@@ -17,7 +17,7 @@ public class Graph<K> {
   }
 
   public Node<K> addNode(K value) {
-    Node<K> node = new Node<K>(value);
+    Node<K> node = new Node<>(value);
     nodes.put(value, node);
     vertices++;
     return node;
@@ -33,13 +33,13 @@ public class Graph<K> {
   }
 
   public Map<K, Node<K>> getNodes() {
-    if(!nodes.isEmpty())
+    if (!nodes.isEmpty())
       return nodes;
     return null;
   }
 
   public Map<K, Integer> getNeighbors(K value) {
-    if(!nodes.isEmpty() && nodes.containsKey(value)){
+    if (!nodes.isEmpty() && nodes.containsKey(value)) {
       return nodes.get(value).getEdges().get(value);
     }
     return null;
@@ -47,6 +47,34 @@ public class Graph<K> {
 
   public int size() {
     return vertices;
+  }
+
+  public Set<Node<K>> breadthFirstSearch(K root) {
+    if (size() == 0) {
+      Set<Node<K>> visited = new LinkedHashSet<>();
+      Queue<Node<K>> queue = new ArrayDeque<>();
+
+      Node<K> qNode = nodes.get(root);
+      if (qNode != null) {
+        queue.add(qNode);
+
+        while (!queue.isEmpty()) {
+          Node<K> node = queue.remove();
+
+          if (visited.contains(node))
+            continue;
+
+          visited.add(node);
+          for (Map.Entry<K, Integer> neighbour : getNeighbors(node.getLiable()).entrySet()) {
+            Node<K> current = nodes.get(neighbour.getKey());
+            if (!visited.contains(current))
+              queue.add(current);
+          }
+        }
+        return visited;
+      }
+    }
+    return new HashSet<>();
   }
 
   @Override
