@@ -5,6 +5,9 @@ package graph;
 
 import graph.structure.Graph;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
@@ -80,5 +83,37 @@ class AppTest {
   public void emptyGraph(){
     Graph<String> graph = new Graph<>();
     assertNull(graph.getNodes());
+  }
+
+  @Test
+  public void BFSGraph(){
+    Graph<String> graph = new Graph<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+
+    graph.addEdge("A", "B", 45);
+    graph.addEdge("A", "C", 45);
+
+    assertNotNull(graph.breadthFirstSearch("B"));
+  }
+
+  @Test
+  public void canFail(){
+    Graph<String> graph = new Graph<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+
+    graph.addEdge("A", "B", 45);
+    graph.addEdge("A", "C", 45);
+
+    assertEquals(new HashSet<>() ,graph.breadthFirstSearch(""));
+  }
+
+  @Test
+  public void edgeCase(){
+    Graph<String> graph = new Graph<>();
+    assertEquals(new HashSet<>() ,graph.breadthFirstSearch("D"));
   }
 }
