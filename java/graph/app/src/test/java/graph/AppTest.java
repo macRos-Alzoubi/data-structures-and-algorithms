@@ -6,21 +6,23 @@ package graph;
 import graph.structure.Graph;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
 
   @Test
-  public void canAddNode(){
+  public void canAddNode() {
     Graph<String> graph = new Graph<>();
 
     assertNotNull(graph.addNode("A"));
   }
 
   @Test
-  public void canAddEdge(){
+  public void canAddEdge() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -31,7 +33,7 @@ class AppTest {
   }
 
   @Test
-  public void getAllNodes(){
+  public void getAllNodes() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -40,7 +42,7 @@ class AppTest {
   }
 
   @Test
-  public void getAllNeighbors(){
+  public void getAllNeighbors() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -51,7 +53,7 @@ class AppTest {
   }
 
   @Test
-  public void getAllNeighborsWithWight(){
+  public void getAllNeighborsWithWight() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -62,7 +64,7 @@ class AppTest {
   }
 
   @Test
-  public void getGraphSize(){
+  public void getGraphSize() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -71,7 +73,7 @@ class AppTest {
   }
 
   @Test
-  public void getOneNode(){
+  public void getOneNode() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addEdge("A", "A", 0);
@@ -80,13 +82,13 @@ class AppTest {
   }
 
   @Test
-  public void emptyGraph(){
+  public void emptyGraph() {
     Graph<String> graph = new Graph<>();
     assertNull(graph.getNodes());
   }
 
   @Test
-  public void BFSGraph(){
+  public void BFSGraph() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -99,7 +101,7 @@ class AppTest {
   }
 
   @Test
-  public void canFail(){
+  public void canFail() {
     Graph<String> graph = new Graph<>();
     graph.addNode("A");
     graph.addNode("B");
@@ -108,12 +110,52 @@ class AppTest {
     graph.addEdge("A", "B", 45);
     graph.addEdge("A", "C", 45);
 
-    assertEquals(new HashSet<>() ,graph.breadthFirstSearch(""));
+    assertEquals(new HashSet<>(), graph.breadthFirstSearch(""));
   }
 
   @Test
-  public void edgeCase(){
+  public void edgeCase() {
     Graph<String> graph = new Graph<>();
-    assertEquals(new HashSet<>() ,graph.breadthFirstSearch("D"));
+    assertEquals(new HashSet<>(), graph.breadthFirstSearch("D"));
+  }
+
+  @Test
+  public void businessTripOkTest() {
+    Graph<String> graph = new Graph<>();
+    List<String> cities = new ArrayList<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+
+    graph.addEdge("A", "B", 25);
+    graph.addEdge("A", "C", 15);
+    graph.addEdge("C", "D", 35);
+
+    cities.add("A");
+    cities.add("C");
+    cities.add("D");
+
+    assertEquals("True, 50$", App.businessTrip(graph, cities));
+  }
+
+  @Test
+  public void businessTripFailTest() {
+    Graph<String> graph = new Graph<>();
+    List<String> cities = new ArrayList<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+
+    graph.addEdge("A", "B", 25);
+    graph.addEdge("A", "C", 15);
+    graph.addEdge("C", "D", 35);
+
+    cities.add("A");
+    cities.add("C");
+    cities.add("B");
+
+    assertEquals("False, $0", App.businessTrip(graph, cities));
   }
 }

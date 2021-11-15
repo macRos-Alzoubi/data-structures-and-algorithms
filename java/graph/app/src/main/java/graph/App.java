@@ -3,26 +3,38 @@
  */
 package graph;
 
+import graph.data.Node;
 import graph.structure.Graph;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class App {
 
-    public static void main(String[] args) {
-      Graph<String> graph = new Graph<>();
-      graph.addNode("A");
-      graph.addNode("B");
-      graph.addNode("C");
-      graph.addNode("D");
+  public static void main(String[] args) {
+    Graph<String> graph = new Graph<>();
+    List<String> cities = new ArrayList<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+    cities.add("A");
+    cities.add("C");
+    cities.add("D");
+//    cities.add("C");
+//    cities.add("D");
 
-      graph.addEdge("A", "B", 25);
-      graph.addEdge("A", "C", 15);
-      graph.addEdge("C", "D", 35);
+    graph.addEdge("A", "B", 25);
+    graph.addEdge("A", "C", 15);
+    graph.addEdge("C", "D", 35);
 
-      System.out.println(graph);
-      System.out.println("\n");
-      System.out.println(graph.breadthFirstSearch("F"));
+
+    System.out.println(businessTrip(graph, cities));
+
+//    System.out.println(graph);
+//    System.out.println("\n");
+//    System.out.println(graph.breadthFirstSearch("F"));
 
 //      Map<String, Integer> neighbors = graph.getNeighbors("A");
 //      System.out.println(neighbors);
@@ -31,5 +43,28 @@ public class App {
 //      System.out.println(graph.size());
 //      System.out.println(graph);
 //      System.out.println(graph.getNodes());
+  }
+
+  public static String businessTrip(Graph<String> graph, List<String> cities) {
+    if (graph.size() > 0 || cities.size() > 0) {
+      int cost = 0;
+      String routeCity = "";
+      String nextCity = "";
+
+      for (int i = 0; i < cities.size() - 1; i++) {
+        routeCity = cities.get(i);
+        nextCity = cities.get(i + 1);
+
+        Map<String, Integer> neighbors = graph.getNeighbors(routeCity);
+
+        if (!neighbors.containsKey(nextCity))
+          return "False, $0";
+
+        cost += graph.getEdgeWight(routeCity, nextCity);
+      }
+
+      return String.format("True, %d$", cost);
     }
+    return "False, $0";
+  }
 }

@@ -32,6 +32,14 @@ public class Graph<K> {
     }
   }
 
+  public Integer getEdgeWight(K from, K to){
+    if (!nodes.isEmpty() && (nodes.containsKey(from) && nodes.containsKey(to))) {
+      return nodes.get(from).getEdges().get(from).get(to);
+
+    }
+    return 0;
+  }
+
   public Map<K, Node<K>> getNodes() {
     if (!nodes.isEmpty())
       return nodes;
