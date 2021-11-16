@@ -32,10 +32,9 @@ public class Graph<K> {
     }
   }
 
-  public Integer getEdgeWight(K from, K to){
+  public Integer getEdgeWight(K from, K to) {
     if (!nodes.isEmpty() && (nodes.containsKey(from) && nodes.containsKey(to))) {
       return nodes.get(from).getEdges().get(from).get(to);
-
     }
     return 0;
   }
@@ -57,26 +56,50 @@ public class Graph<K> {
     return vertices;
   }
 
-  public Set<Node<K>> breadthFirstSearch(K root) {
-    if (size() == 0) {
-      Set<Node<K>> visited = new LinkedHashSet<>();
-      Queue<Node<K>> queue = new ArrayDeque<>();
+  public Set<K> breadthFirstSearch(K root) {
+    if (size() > 0) {
+      Set<K> visited = new LinkedHashSet<>();
+      Queue<K> queue = new ArrayDeque<>();
 
-      Node<K> qNode = nodes.get(root);
-      if (qNode != null) {
-        queue.add(qNode);
+      if (nodes.get(root) != null) {
+        queue.add(root);
 
         while (!queue.isEmpty()) {
-          Node<K> node = queue.remove();
+          K node = queue.remove();
 
-          if (visited.contains(node))
-            continue;
+          if (!visited.contains(node)) {
+            visited.add(node);
+            for (Map.Entry<K, Integer> neighbour : getNeighbors(node).entrySet()) {
+              K current = neighbour.getKey();
+              if (!visited.contains(current))
+                queue.add(current);
+            }
+          }
+        }
+        return visited;
+      }
+    }
+    return new HashSet<>();
+  }
 
-          visited.add(node);
-          for (Map.Entry<K, Integer> neighbour : getNeighbors(node.getLiable()).entrySet()) {
-            Node<K> current = nodes.get(neighbour.getKey());
-            if (!visited.contains(current))
-              queue.add(current);
+  public Set<K> depthFirstSearch(K root) {
+    if (size() > 0) {
+      Set<K> visited = new LinkedHashSet<>();
+      Stack<K> stack = new Stack<>();
+
+      if (nodes.get(root) != null) {
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+          K node = stack.pop();
+
+          if (!visited.contains(node)) {
+            visited.add(node);
+            for (Map.Entry<K, Integer> neighbors : getNeighbors(node).entrySet()) {
+              K current = neighbors.getKey();
+              if (!visited.contains(current))
+                stack.push(current);
+            }
           }
         }
         return visited;
