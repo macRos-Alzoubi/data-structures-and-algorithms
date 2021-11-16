@@ -158,4 +158,42 @@ class AppTest {
 
     assertEquals("False, $0", App.businessTrip(graph, cities));
   }
+
+  @Test
+  public void DFSOk(){
+    Graph<String> graph = new Graph<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+
+    graph.addEdge("A", "B", 25);
+    graph.addEdge("A", "C", 15);
+    graph.addEdge("C", "D", 5);
+
+//    System.out.println(graph.depthFirstSearch("A"));
+    assertEquals("[A, C, D, B]", graph.depthFirstSearch("A").toString());
+  }
+
+  @Test
+  public void DFSOnEdges(){
+    Graph<String> graph = new Graph<>();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+
+//    graph.addEdge("A", "B", 25);
+//    graph.addEdge("A", "C", 15);
+//    graph.addEdge("C", "D", 5);
+
+//    System.out.println(graph.depthFirstSearch("A"));
+    assertEquals("[A]", graph.depthFirstSearch("A").toString());
+  }
+
+  @Test
+  public void DFSOnFail(){
+    Graph<String> graph = new Graph<>();
+    assertEquals("[]", graph.depthFirstSearch("A").toString());
+  }
 }

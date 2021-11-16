@@ -27,10 +27,13 @@ public class App {
 
     graph.addEdge("A", "B", 25);
     graph.addEdge("A", "C", 15);
-    graph.addEdge("C", "D", 35);
+    graph.addEdge("C", "D", 5);
+
+    System.out.println(graph.depthFirstSearch("A"));
+    System.out.println(graph.breadthFirstSearch("A"));
 
 
-    System.out.println(businessTrip(graph, cities));
+//    System.out.println(businessTrip(graph, cities));
 
 //    System.out.println(graph);
 //    System.out.println("\n");
