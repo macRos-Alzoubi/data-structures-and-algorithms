@@ -25,6 +25,7 @@ public class Navigator<T> {
      node.setBack(back);
      back.setNext(node);
      back = node;
+     current = back;
     }
     size++;
   }
@@ -49,9 +50,12 @@ public class Navigator<T> {
   }
 
   public void go(T data){
-    add(data);
-    if(current.getNext() != null)
+    if(current == back)
+      add(data);
+    else {
       current = current.getNext();
+      current.setData(data);
+    }
   }
 
   public T forward(){

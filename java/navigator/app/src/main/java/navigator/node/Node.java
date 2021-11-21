@@ -1,11 +1,11 @@
 package navigator.node;
 
 public class Node<T> {
-  private final T data;
+  private T data;
   private Node<T> next;
   private Node<T> back;
 
-  public Node(T data){
+  public Node(T data) {
     this.data = data;
     next = null;
     back = null;
@@ -14,6 +14,10 @@ public class Node<T> {
 
   public T getData() {
     return data;
+  }
+
+  public void setData(T data) {
+    this.data = data;
   }
 
   public Node<T> getNext() {
